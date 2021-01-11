@@ -10,7 +10,7 @@ public class Main {
         //0 = wall OR already visited
         //1 = available path
         //2 = exit
-        int maze[][] = {
+        int[][] maze = {
                 {1,1,1,1,1,1},
                 {1,0,1,0,0,1},
                 {1,1,1,1,0,1},
@@ -29,22 +29,15 @@ public class Main {
 
     public static int[][] initializeTestMaze(int[][] maze) {
         //test maze to check and modify instead of original maze
-        int testMaze[][] = new int[maze.length][maze[0].length];
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[0].length; j++) {
-                testMaze[i][j] = maze[i][j];
-            }
-        }
+        int[][] testMaze = new int[maze.length][maze[0].length];
+        for (int i = 0; i < maze.length; i++)
+            System.arraycopy(maze[i], 0, testMaze[i], 0, maze[0].length);
 
         return testMaze;
     }
 
     public static boolean isValid(int row, int col, int[][] maze) {
-        if (row < 0 || row >= maze.length || col < 0 || col >= maze[row].length) {
-            return false;
-        }
-
-        return true;
+        return row >= 0 && row < maze.length && col >= 0 && col < maze[row].length;
     }
 
     public static void printPath(Stack<Point> path, boolean isDFS) {
