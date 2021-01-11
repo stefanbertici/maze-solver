@@ -1,2 +1,2 @@
 # maze-solver
- this is the first iteration of a maze solver algorithm
+This is the implementation of DFS and BFS for solving a 2d array maze.
